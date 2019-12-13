@@ -1,0 +1,19 @@
+{
+    "name": "metenev/skynet-back.test",
+    "type": "project",
+    "license": "GPL 3.0",
+    "authors": [
+        {
+            "name": "Dmitry Metenyov",
+            "email": "metenyov.dmitriy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "SkyNetBack\\": "classes"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^4.0"
+    }
+}

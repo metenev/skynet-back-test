@@ -1,0 +1,31 @@
+Options -Indexes
+
+SetEnv ENV_DIR ..
+
+DirectoryIndex public/index.php public/index.html
+
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+    order allow,deny
+    deny from all
+    satisfy all
+</Files>
+<Files ~ "^.*\.([Ee][Nn][Vv])">
+    order allow,deny
+    deny from all
+    satisfy all
+</Files>
+
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_URI} ^/public/ [NC]
+RewriteRule ^ - [L]
+
+RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+RewriteRule ^(.*)$ public/$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php [L]
